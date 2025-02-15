@@ -1,26 +1,26 @@
 public class PasswordChecker {
     private int minLength;
     private int maxRepeats;
-    public void setMinLength( int len ) {
+    public void setMinLength(int len) {
         if (len < 0) {
-            throw new IllegalArgumentException(len);
+            throw new IllegalArgumentException("Нельзя передавать значение <0, передали: " + len);
         }
         this.minLength = len;
     }
 
-    public void setMaxRepeats( int count ) {
+    public void setMaxRepeats(int count) {
         if (count < 0) {
-            throw new IllegalArgumentException(count);
+            throw new IllegalArgumentException("Нельзя передавать значение <0, передали: " + count);
         }
         this.maxRepeats = count;
     }
 
-    public boolean verify ( String password ) {
+    public boolean verify (String password) {
         if (this.minLength == 0) {
-            throw new IllegalStateException("minLength");
+            throw new IllegalStateException("Чекеру не установлен аттрибут: minLength");
         }
         if (this.maxRepeats == 0) {
-            throw new IllegalStateException("maxRepeats");
+            throw new IllegalStateException("Чекеру не установлен аттрибут: maxRepeats");
         }
 
         if (password.length() < this.minLength) {
